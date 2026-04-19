@@ -1,12 +1,15 @@
 import boto3
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Initialize clients
 ec2 = boto3.resource('ec2')
 s3 = boto3.resource('s3')
 
-# Replace these with your actual values (from the automation script output)
-INSTANCE_ID = 'i-0fefbf20b6b8c096e'   # EC2 instance ID
-BUCKET_NAME = 'vedant-demo-bucket-1760094953'  # S3 bucket name
+INSTANCE_ID = os.getenv('INSTANCE_ID')
+BUCKET_NAME = os.getenv('BUCKET_NAME')
 
 # 1️⃣ Terminate EC2 Instance
 try:
